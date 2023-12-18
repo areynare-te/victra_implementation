@@ -12,7 +12,12 @@ def receive_alert():
         if token == "TestToken4":
             alert_body = request.json
             alert_name = alert_body["alert"]["rule"]["name"]
-            print(alert_name)
+            print(alert_name + '\n')
+            if "details" in alert_body.get("alert", {}):
+                details = alert_body["alert"]["details"]
+                for detail in details:
+                    source_id = detail.get("source", {}).get("id")
+                    print(source_id+ '\n')
             return "Received Alert", 200
         else:
             return "Unauthorized", 403
