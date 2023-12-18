@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request, Blueprint
 import requests
 
+from src.commands.enable_tests import enable_test
+
 # Define blueprint
 proactive_test_enablement = Blueprint('proactive_test_enablement', __name__)
 
@@ -12,17 +14,12 @@ def receive_alert():
         token = request.headers["Authorization"].split(" ")[1]
         if token == "TestToken4":
             alert_body = request.json
-            alert_name = alert_body["alert"]["rule"]["name"]
-            print(alert_name + '\n')
+            print(alert_body)
             if "details" in alert_body.get("alert", {}):
                 details = alert_body["alert"]["details"]
                 for detail in details:
                     source_id = detail.get("source", {}).get("name")
-                    print(source_id+ '\n')
-                # Send PUT request
-                enable_body = {"enabled": 'true'}
-                headers = {"Authorization": "Bearer 05dd35b2-863a-469c-86da-99e74ba499d8"}
-                enable_response = requests.put("https://api.thousandeyes.com/v7/tests/http-server/4519688?aid=1129196", json=enable_body, headers=headers)
+                    enable_test(source_id)
             return "Received Alert", 200
         else:
             return "Unauthorized", 403
