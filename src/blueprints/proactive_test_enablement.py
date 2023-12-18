@@ -22,7 +22,7 @@ def receive_alert():
                 # Send PUT request
                 enable_body = {"enabled": 'true'}
                 headers = {"Authorization": "Bearer 05dd35b2-863a-469c-86da-99e74ba499d8"}
-                enable_response = requests.put("https://api.housandeyes.com/v7/tests/http-server/4519688", json=enable_body, headers=headers)
+                enable_response = requests.put("https://api.thousandeyes.com/v7/tests/http-server/4519688?aid=1129196", json=enable_body, headers=headers)
             return "Received Alert", 200
         else:
             return "Unauthorized", 403
