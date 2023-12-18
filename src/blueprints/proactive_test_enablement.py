@@ -11,7 +11,8 @@ def receive_alert():
         token = request.headers["Authorization"].split(" ")[1]
         if token == "TestToken4":
             alert_body = request.json
-            print(alert_body)
+            alert_name = alert_body["rule"]["name"]
+            print(alert_name)
             return "Received Alert", 200
         else:
             return "Unauthorized", 403
