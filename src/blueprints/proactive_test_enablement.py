@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request, Blueprint
+import requests
 
 # Define blueprint
 proactive_test_enablement = Blueprint('proactive_test_enablement', __name__)
@@ -16,8 +17,12 @@ def receive_alert():
             if "details" in alert_body.get("alert", {}):
                 details = alert_body["alert"]["details"]
                 for detail in details:
-                    source_id = detail.get("source", {}).get("id")
+                    source_id = detail.get("source", {}).get("name")
                     print(source_id+ '\n')
+                # Send PUT request
+                enable_body = {"enabled": 'true'}
+                headers = {"Authorization": "Bearer 05dd35b2-863a-469c-86da-99e74ba499d8"}
+                enable_response = requests.put("https://api.housandeyes.com/v7/tests/http-server/4519688", json=enable_body, headers=headers)
             return "Received Alert", 200
         else:
             return "Unauthorized", 403
