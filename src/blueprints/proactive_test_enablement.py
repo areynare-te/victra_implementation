@@ -10,6 +10,7 @@ def receive_alert():
     if "Authorization" in request.headers:
         token = request.headers["Authorization"].split(" ")[1]
         if token == "TestToken4":
+            print("Leego")
             return "Received Alert", 200
         else:
             return "Unauthorized", 403
