@@ -8,7 +8,7 @@ proactive_test_enablement = Blueprint('proactive_test_enablement', __name__)
 @proactive_test_enablement.route('/alert', methods = ['POST'])
 def receive_alert():
     if "Authorization" in request.headers:
-        token = request.headers("x-authorization").split(" ")[1]
+        token = request.headers["x-authorization"].split(" ")[1]
         return token, 200
     else:
         return "Unauthorized", 403
