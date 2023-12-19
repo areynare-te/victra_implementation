@@ -4,8 +4,7 @@ test_relation = {
     "Alaska" : "4519688",
     "Bay Area" : "4520897",
     "California" : "4520906",
-    "Carolina": "4520919",
-    ""
+    "Carolina": "4520919"
 }
 
 re_pattern = re.compile(r'Shops\s(.*?)(?=-)')
