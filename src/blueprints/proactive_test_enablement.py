@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, Blueprint
 import requests
 
 from src.commands.enable_tests import enable_test
+from src.commands.disable_tests import disable_test
 
 # Define blueprint
 proactive_test_enablement = Blueprint('proactive_test_enablement', __name__)
@@ -15,8 +16,10 @@ def receive_alert():
         if token == "TestToken4":
             alert_body = request.json
             test_name = alert_body['alert']['rule']['name']
-            print(test_name)
-            enable_test(test_name)
+            if alert_body['type']['id'] == 2:
+                enable_test(test_name)
+            else:
+                disable_test(test_name)
             return "Received Alert", 200
         else:
             return "Unauthorized", 403
