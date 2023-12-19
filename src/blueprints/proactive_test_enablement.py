@@ -17,7 +17,7 @@ def receive_alert():
             alert_body = request.json
             print(alert_body)
             test_name = alert_body['alert']['rule']['name']
-            if alert_body['type']['id'] == "2":
+            if alert_body['type'] == "2":
                 enable_test(test_name)
             else:
                 disable_test(test_name)
