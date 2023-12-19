@@ -5,7 +5,7 @@ test_relation = {
     "Bay Area" : "4520897",
     "California" : "4520906",
     "Carolina": "4520919",
-    "Florida" : "4520920",
+    "Shops Florida" : "4520920",
     "Georgia" : "4520921",
     "Hawaii" : "4520922",
     "Iowa" : "4520923",
