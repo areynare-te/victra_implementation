@@ -30,7 +30,7 @@ re_pattern = re.compile(r'Shops\s(.*?)(?=\s*-)')
 def enable_test(alerted_test):
     region = re.search(re_pattern, alerted_test)
     print(region)
-    test = test_relation.get(region, '4519688')
+    test = test_relation.get(region.group(1), '4519688')
     print(test)
     enable_body = {"enabled": 'true'}
     headers = {"Authorization": "Bearer 05dd35b2-863a-469c-86da-99e74ba499d8"}
