@@ -25,7 +25,7 @@ test_relation = {
     "Wisconsin" : "4520970"
 }
 
-re_pattern = re.compile(r'Shops\s(.*?)(?=-)')
+re_pattern = re.compile(r'Shops\s(.*?)(?=\s*-)')
 
 def enable_test(alerted_test):
     region = re.search(re_pattern, alerted_test)
