@@ -53,7 +53,7 @@ test_relation = {
 
 re_pattern = re.compile(r'Shops\s(.*?)(?=\s*-)')
 
-def enable_test(alerted_test):
+def disable_tests(alerted_test):
     region = re.search(re_pattern, alerted_test)
     test = test_relation.get(region.group(0), '4519688')
     enable_body = {"enabled": 'false'}
