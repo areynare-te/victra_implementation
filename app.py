@@ -9,3 +9,4 @@ from src.blueprints.manager_app import application, manager_app
 # Start application
 if __name__ == '__main__':
     application.run()
+    
