@@ -1,7 +1,7 @@
 import requests, re
 
 test_relation = {
-    "Shops Alaska" : "4519688",
+    "Shops AK" : "4529007",
     "Shops Bay Area" : "4520897",
     "Shops California" : "4520906",
     "Shops Carolina": "4520919",
