@@ -11,8 +11,8 @@ application.run(debug=True)
 
 # Create manager app
 class ManagerApp():
-    def __init__(self, app) -> None:
-        self.app = app
+    def __init__(self, application) -> None:
+        self.application = application
 
 # Start app
 manager_app = ManagerApp(application)
