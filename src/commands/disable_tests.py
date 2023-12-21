@@ -53,11 +53,11 @@ test_relation = {
 
 re_pattern = re.compile(r'Shops\s(.*?)(?=\s*-)')
 
-def disable_tests(alerted_test):
+def disable_test(alerted_test):
     region = re.search(re_pattern, alerted_test)
     test = test_relation.get(region.group(0), '4519688')
     enable_body = {"enabled": 'false'}
-    
+
     headers = {"Authorization": "Bearer 05dd35b2-863a-469c-86da-99e74ba499d8"}
     enable_response = requests.put("https://api.thousandeyes.com/v7/tests/http-server/"+ test + "?aid=1129196", json=enable_body, headers=headers)
     return
