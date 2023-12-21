@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request, Blueprint
-import requests, logging
+import requests, logging, os
 
 # Import commands
 from src.commands.enable_tests import enable_test
@@ -18,6 +18,7 @@ def receive_alert():
     try:
         if "Authorization" in request.headers:
             token = request.headers["Authorization"].split(" ")[1]
+            b_token = os.getenv("API_TOKEN", "TestToken4")
             if token == "TestToken4":
                 alert_body = request.json
                 test_name = alert_body['alert']['rule']['name']
