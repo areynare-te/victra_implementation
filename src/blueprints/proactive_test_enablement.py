@@ -42,3 +42,13 @@ def receive_alert():
 @proactive_test_enablement.route('/ping', methods = ['GET'])
 def heatlh_check():
     return "pong", 200
+
+@proactive_test_enablement.route('/log', methods = ['GET'])
+def logg():
+    try:
+        with open('flask_app.log', 'r') as log_file:
+            logs = log_file.read()
+        return logs, 200
+    except Exception as e:
+        logger.error('Error reading log file: %s', str(e))
+        return "Internal Server Error", 500
