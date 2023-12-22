@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Create and activate virtual environment
 RUN python -m venv env
-ENV PATH="/app/env/bin:$PATH"
+ENV PATH="/env/bin:$PATH"
 
 # Install dependencies
 RUN pip install flask
