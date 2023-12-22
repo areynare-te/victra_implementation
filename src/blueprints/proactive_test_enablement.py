@@ -19,7 +19,7 @@ def receive_alert():
         if "Authorization" in request.headers:
             token = request.headers["Authorization"].split(" ")[1]
             b_token = os.getenv("API_TOKEN", "TestToken4")
-            if token == "TestToken4":
+            if token == b_token:
                 alert_body = request.json
                 test_name = alert_body['alert']['rule']['name']
                 if alert_body['type'] == "2":
