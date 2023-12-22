@@ -8,6 +8,7 @@ ENV PATH="/env/bin:$PATH"
 
 # Install dependencies
 RUN pip install flask
+RUN pip install requests
 
 # Copy the application code into the container
 COPY . .
