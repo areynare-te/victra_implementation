@@ -23,10 +23,10 @@ def receive_alert():
                 alert_body = request.json
                 test_name = alert_body['alert']['rule']['name']
                 if alert_body['type'] == "2":
-                    enable_test(test_name)
+                    ##enable_test(test_name)
                     logger.info("Enabled Test: %s", test_name)
                 else:
-                    disable_test(test_name)
+                    ##disable_test(test_name)
                     logger.info("Disabled Test: %s", test_name)
                 return "Received Alert", 200
             else:
