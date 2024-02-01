@@ -54,3 +54,13 @@ def logg():
     except Exception as e:
         logger.error('Error reading log file: %s', str(e))
         return "Internal Server Error", 500
+
+@proactive_test_enablement.route('/log', methods = ['DELETE'])
+def clear_log():
+    try:
+        with open('flask_app.log', 'w+') as log_file:
+            log_file.truncate(0)
+        return "Log file cleared", 200
+    except Exception as e:
+        logger.error('Error clearing log file: %s', str(e))
+        return "Internal Server Error", 500
